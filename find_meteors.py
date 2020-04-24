@@ -18,7 +18,7 @@ def get_dist(meteor):
     return meteor.get('distance', math.inf)
     
 if __name__ == '__main__':
-    my_loc = (29.424122, -98.493628)
+    my_loc = (36.975227, -121.953293)
 
     meteor_resp = requests.get('https://data.nasa.gov/resource/y77d-th95.json')
     meteor_data = meteor_resp.json()
@@ -31,5 +31,7 @@ if __name__ == '__main__':
                                        my_loc[1])
 
     meteor_data.sort(key=get_dist)
+    top_ten = meteor_data[0:10]
 
-    print(meteor_data[0:10])
+    for meteor in top_ten:
+        print(meteor['name'])
